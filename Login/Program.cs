@@ -6,7 +6,8 @@ using SuperSocket;
 using SuperSocket.Command;
 
 var host = SuperSocketHostBuilder
-    .Create<ServerPacket, ApolloPipelineFilter>()
+    .Create<ApolloCommand, ApolloPipelineFilter>()
+    .UsePackageDecoder<ApolloPackageDecoder>()
     .UseCommand((options => {
         options.AddCommandAssembly(typeof(CA_LOGIN).GetTypeInfo().Assembly);
     }))
